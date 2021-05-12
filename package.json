@@ -2,7 +2,7 @@
   "name": "virtual-pet",
   "version": "1.0.0",
   "description": "Elliot's Virtial Pet Game",
-  "main": "index.js",
+  "main": "pet.js",
   "scripts": {
     "test": "jest"
   },
