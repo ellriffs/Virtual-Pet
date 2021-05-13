@@ -43,6 +43,19 @@ describe('walk',() => {
     });
 });
 
+// Feed Function //
+
+describe('feed',() => {
+    it('decreases hunger level by 3', () => {
+    const pet = new Pet('Fido');
+    pet.hunger = 3;
+    pet.feed();
+    expect(pet.hunger).toEqual(0)
+    
+    });
+});
+
+
 //Hunger Test//
 
 describe('constructor', () => {
