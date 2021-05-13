@@ -25,12 +25,14 @@ function Pet(name) {
 }
 
     Pet.prototype.feed = function(){
-        if (this.hunger >=(maxHumger + 3)){
-            this.hunger -= 3
-    }   else{
-            this.hunger -= 1
-    };
+    if(this.hunger >=(maxHumger + 3)){
+        this.hunger -= 3
+}   if(this.hunger === (maxHumger + 2)){
+        this.hunger -= 2
+}  else{
+        this.hunger 
     }
+};
 
 
 module.exports = Pet;
