@@ -1,18 +1,40 @@
 const maxFit = 10;
-const maxHumger = 0
+const minFit = 0
+maxHunger = 0
+const hungry = "I am hungry";
+const needWalk = "I need a walk";
+const eatAndWalk  ="I am hungry AND I need a walk"
+const parent = new Pet('Dave');
+const child = new Pet('Amelia');
+
 
 function Pet(name) {
     this.name = name;
     this.age = 0;
     this.hunger = 0;
     this.fitness = 10;
+    this.children = []
 }
+
+Pet.prototype = {
+    get isAlive() {
+    return this.age < 30 && this.hunger < 10 && this.fitness > 0;
+    }
+}
+
     Pet.prototype.growUp = function(){
-    this.age += 1, this.hunger += 5, this.fitness -= 3
+        if (!this.isAlive) {
+            throw new Error(this.name+' is no longer alive :(');
 }
+        this.age += 1, this.hunger += 5, this.fitness -= 3
+}
+
     Pet.prototype.walk = function(){
-    if (this.fitness === maxFit){
-        this.fitness    
+    if (!this.isAlive) {
+    throw new Error(this.name+' is no longer alive :(');
+
+    } if (this.fitness === maxFit){
+            this.fitness    
     } if (this.fitness === (maxFit -1)) {
         this.fitness += 1
     } if (this.fitness === (maxFit - 2)){
@@ -25,16 +47,35 @@ function Pet(name) {
 }
 
     Pet.prototype.feed = function(){
-    if(this.hunger >=(maxHumger + 3)){
+    if (!this.isAlive) {
+    throw new Error(this.name+' is no longer alive :(');
+}
+    if  (this.hunger >= (maxHunger + 3)){
         this.hunger -= 3
-}   if(this.hunger === (maxHumger + 2)){
+}   if  (this.hunger === (maxHunger + 2)){
         this.hunger -= 2
-}  else{
+}  else {
         this.hunger 
-    }
-};
+    };
+}
+
+Pet.prototype.checkUp = function(){
+    let result;
+    if(this.fitness >= 4 && this.hunger <= 6){
+        result = "I feel great"
+}   if (this.fitness <= 3 && this.hunger >= 5 ){
+        result = "I am hungry AND I need a walk"
+}   if (this.fitness <= 3 && this.hunger < 5) {
+        result = "I need a walk"
+}   if (this.hunger >= 5 && this.fitness > 3){
+    result = "I am hungry"
+}   if(this.hunger ===10 || this.fitness === 0){
+    result = this.name+' is no longer alive'
+}    return result 
+
+}
+
+
 
 
 module.exports = Pet;
-
-
