@@ -1,6 +1,7 @@
 const Pet = require('../src/pet');
 
 
+
 // Constructor//
 describe('constructor', () => {
     it('sets the name property', () => {
@@ -10,6 +11,7 @@ describe('constructor', () => {
     expect(pet.hunger).toEqual(0);
     expect(pet.hunger).toEqual(0);
     expect(pet.fitness).toEqual(10);
+    expect(pet.children).toEqual([])
     });
 });
 
@@ -85,5 +87,13 @@ describe('CheckUp',() => {
     expect(pet.checkUp()).toEqual(pet.name+' is no longer alive')
 
     });
-});
+}); 
 
+describe('adoptChild', () => {
+    it("adds child to array of parent", () => {
+    const pet = new Pet ('Fido')
+    const child = new Pet('child');
+    pet.adoptChild(child)
+        expect(pet.children[0]).toEqual(child)
+    })
+    })

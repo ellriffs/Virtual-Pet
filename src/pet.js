@@ -4,8 +4,6 @@ maxHunger = 0
 const hungry = "I am hungry";
 const needWalk = "I need a walk";
 const eatAndWalk  ="I am hungry AND I need a walk"
-const parent = new Pet('Dave');
-const child = new Pet('Amelia');
 
 
 function Pet(name) {
@@ -22,7 +20,7 @@ Pet.prototype = {
     }
 }
 
-    Pet.prototype.growUp = function(){
+    Pet.prototype.growUp =function(){
         if (!this.isAlive) {
             throw new Error(this.name+' is no longer alive :(');
 }
@@ -72,8 +70,15 @@ Pet.prototype.checkUp = function(){
 }   if(this.hunger ===10 || this.fitness === 0){
     result = this.name+' is no longer alive'
 }    return result 
-
 }
+
+Pet.prototype.adoptChild = function (child) {
+    if (!this.isAlive) {
+        throw new Error(this.name+' is no longer alive :(');
+    }
+    return this.children.push(child)
+}; 
+
 
 
 
