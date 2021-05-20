@@ -25,7 +25,8 @@ Pet.prototype = {
             throw new Error(this.name+' is no longer alive :(');
 }
         this.age += 1, this.hunger += 5, this.fitness -= 3
-}
+        console.log("YAYY!! "+`${this.name}`+" is " + this.age+" years old!!")
+}       
 
     Pet.prototype.walk = function(){
     if (!this.isAlive) {
@@ -41,8 +42,10 @@ Pet.prototype = {
         this.fitness += 3
     }else if (this.fitness <= (maxFit -4)){
         this.fitness += 4
-    };
+    }; console.log(`${this.name}`+"'s fitness is now " + this.fitness)
 }
+
+
 
     Pet.prototype.feed = function(){
     if (!this.isAlive) {
@@ -54,7 +57,7 @@ Pet.prototype = {
         this.hunger -= 2
 }  else {
         this.hunger 
-    };
+    }; console.log(`${this.name}`+"'s hunger is now " + this.hunger)
 }
 
 Pet.prototype.checkUp = function(){
@@ -75,9 +78,9 @@ Pet.prototype.checkUp = function(){
 Pet.prototype.adoptChild = function (child) {
     if (!this.isAlive) {
         throw new Error(this.name+' is no longer alive :(');
-    }
-    return this.children.push(child)
-}; 
+    }   this.children.push(child)
+    console.log("Congratulations to the new parent. "+`${this.name}`+"!!")
+};
 
 
 
