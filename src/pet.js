@@ -1,9 +1,15 @@
+const maxAge = 30
 const maxFit = 10;
 const minFit = 0
-maxHunger = 0
-const hungry = "I am hungry";
-const needWalk = "I need a walk";
-const eatAndWalk  ="I am hungry AND I need a walk"
+const highMidFit = 4
+const lowestFit = 3
+const maxHunger = 10
+const highMidHunger = 6
+const midHunger = 5
+
+const hungry =  "I am hungry";
+const needWalk =  "I need a walk";
+const eatAndWalk  = "I am hungry AND I need a walk"
 
 
 function Pet(name) {
@@ -16,70 +22,54 @@ function Pet(name) {
 
 Pet.prototype = {
     get isAlive() {
-    return this.age < 30 && this.hunger < 10 && this.fitness > 0;
-    }
-}
+    return this.age < maxAge && this.hunger < maxHunger && this.fitness > minFit;
+    },
 
-    Pet.prototype.growUp =function(){
+growUp(){
         if (!this.isAlive) {
             throw new Error(this.name+' is no longer alive :(');
 }
-        this.age += 1, this.hunger += 5, this.fitness -= 3
-        console.log("YAYY!! "+`${this.name}`+" is " + this.age+" years old!!")
-}       
+        this.age += 1, this.hunger += midHunger, this.fitness -= lowestFit
+},       
 
-    Pet.prototype.walk = function(){
+walk(){
+    if (!this.isAlive) {
+    throw new Error(this.name+' is no longer alive :(');}
+    if (this.fitness <= 6){
+    this.fitness += 4
+    }
+},
+
+feed(){
     if (!this.isAlive) {
     throw new Error(this.name+' is no longer alive :(');
-
-    } if (this.fitness === maxFit){
-            this.fitness    
-    } if (this.fitness === (maxFit -1)) {
-        this.fitness += 1
-    } if (this.fitness === (maxFit - 2)){
-        this.fitness += 2
-    } if (this.fitness === (maxFit -3)){
-        this.fitness += 3
-    }else if (this.fitness <= (maxFit -4)){
-        this.fitness += 4
-    }; console.log(`${this.name}`+"'s fitness is now " + this.fitness)
+}   if (this.hunger >= 3){
+    this.hunger -= 3
+} else{
+    this.hunger -= 2
 }
+},
 
-
-
-    Pet.prototype.feed = function(){
-    if (!this.isAlive) {
-    throw new Error(this.name+' is no longer alive :(');
-}
-    if  (this.hunger >= (maxHunger + 3)){
-        this.hunger -= 3
-}   if  (this.hunger === (maxHunger + 2)){
-        this.hunger -= 2
-}  else {
-        this.hunger 
-    }; console.log(`${this.name}`+"'s hunger is now " + this.hunger)
-}
-
-Pet.prototype.checkUp = function(){
+checkUp(){
     let result;
-    if(this.fitness >= 4 && this.hunger <= 6){
-        result = "I feel great"
-}   if (this.fitness <= 3 && this.hunger >= 5 ){
-        result = "I am hungry AND I need a walk"
-}   if (this.fitness <= 3 && this.hunger < 5) {
-        result = "I need a walk"
-}   if (this.hunger >= 5 && this.fitness > 3){
-    result = "I am hungry"
-}   if(this.hunger ===10 || this.fitness === 0){
+    if(this.fitness >= highMidFit && this.hunger <= highMidHunger){
+    result = "I feel great"
+}   if (this.fitness <= lowestFit && this.hunger >= midHunger ){
+    result = "I am hungry AND I need a walk"
+}   if (this.fitness <= lowestFit && this.hunger < midHunger) {
+    result = "I need a walk"
+}   if (this.hunger >= midHunger && this.fitness > lowestFit){
+    result =  "I am hungry"
+}   if(this.hunger === maxHunger|| this.fitness === minFit){
     result = this.name+' is no longer alive'
-}    return result 
+}     return result
+}
 }
 
-Pet.prototype.adoptChild = function (child) {
+Pet.prototype.adoptChild = function  (child) {
     if (!this.isAlive) {
         throw new Error(this.name+' is no longer alive :(');
     }   this.children.push(child)
-    console.log("Congratulations to the new parent. "+`${this.name}`+"!!")
 };
 
 

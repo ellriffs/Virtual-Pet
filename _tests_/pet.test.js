@@ -1,11 +1,15 @@
 const Pet = require('../src/pet');
 
+let pet;
+let child;
 
+beforeEach( ()=> {
+    pet = new Pet('Fido');
+    child = new Pet('child');
+});
 
-// Constructor//
 describe('constructor', () => {
-    it('sets the name property', () => {
-    const pet = new Pet('Fido');
+it('sets the name property', () => {
     expect(pet.name).toEqual('Fido');
     expect(pet.age).toEqual(0);
     expect(pet.hunger).toEqual(0);
@@ -13,13 +17,8 @@ describe('constructor', () => {
     expect(pet.fitness).toEqual(10);
     expect(pet.children).toEqual([])
     });
-});
 
-//Grow Up function Test//
-
-describe('growUp', () => {
-    it('increments the age by 1 or returns error if pet is no longer alive', () => {
-    const pet = new Pet('Fido');
+it('increments the age by 1 or returns error if pet is no longer alive', () => {
     pet.growUp();
     expect(pet.age).toEqual(1);
     expect(pet.hunger).toEqual(5);
@@ -28,28 +27,17 @@ describe('growUp', () => {
     pet.age = 30
     expect(()=> pet.growUp()).toThrow(pet.name+' is no longer alive :(')
     });
-});
-
-// Walk Function //
-
-describe('walk',() => {
-    it('increases fitness level by 4 or returns error is pet is no longer alive', () => {
-    const pet = new Pet('Fido');
+    
+    it('increases fitness level by 4 or returns error is pet is no longer alive', () => {;
     pet.fitness = 1;
     pet.walk();
     expect(pet.fitness).toEqual(5)
 
     pet.age = 30
     expect(() => pet.walk()).toThrow(pet.name + ' is no longer alive :(');
-    
     });
-});
 
-// Feed Function //
-
-describe('feed',() => {
     it('decreases hunger level by 3 or throws an error is the pet is no longer alive', () => {
-    const pet = new Pet('Fido');
     pet.hunger = 3;
     pet.feed();
     expect(pet.hunger).toEqual(0);
@@ -57,13 +45,8 @@ describe('feed',() => {
     pet.age = 30;
         expect(() => pet.feed()).toThrow(pet.name+' is no longer alive :(');
     });
-});
 
-
-// Pet Status //
-describe('CheckUp',() => {
-    it('Returns string of pet status', () => {
-    const pet = new Pet('Fido');
+it('Returns string of pet status', () => {
     pet.checkUp();
 
     pet.fitness = 10
@@ -85,15 +68,10 @@ describe('CheckUp',() => {
     pet.fitness = 0
     pet.hunger = 10
     expect(pet.checkUp()).toEqual(pet.name+' is no longer alive')
-
     });
-}); 
 
-describe('adoptChild', () => {
     it("adds child to array of parent", () => {
-    const pet = new Pet ('Fido')
-    const child = new Pet('child');
     pet.adoptChild(child)
-        expect(pet.children[0]).toEqual(child)
-    })
-    })
+    expect(pet.children[0]).toEqual(child)
+    });
+});
