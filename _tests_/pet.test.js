@@ -3,12 +3,14 @@ const Pet = require('../src/pet');
 let pet;
 let child;
 
-beforeEach( ()=> {
-    pet = new Pet('Fido');
-    child = new Pet('child');
-});
-
 describe('constructor', () => {
+    beforeAll(() => {
+        child = new Pet (child)
+    });
+    
+    beforeEach( ()=> {
+        pet = new Pet('Fido');
+    });
 it('sets the name property', () => {
     expect(pet.name).toEqual('Fido');
     expect(pet.age).toEqual(0);
