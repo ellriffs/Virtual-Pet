@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  background-color: aqua;
+}
+
+.title {
+  height: fit-content;
+  width: 100%;
+  font-size: 5rem;
+  color: orange;
+  stroke: red;
+  text-shadow: 2px 2px 2px red;
+}
+
+.function_container {
+  color: goldenrod;
+  font-family: 'Pacifico';
+  height: 100%;
+  width: 100%;
+  display: flex;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.main_container {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog_main {
+  height: 300px;
+  width: 300px;
+  padding: 30px;
+}
+
+.utils_container {
+  color: goldenrod;
+  font-family: 'Pacifico';
+  height: 100%;
+  width: 100%;
+  display: flex;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.heart,
+.stamina,
+.pizza {
+  height: 100px;
+  width: 100px;
+}
+
+.stamina,
+.pizza {
+  height: 150px;
+}
+
+.feed,
+.walk,
+.grow {
+  height: 150px;
+}
+
+#pet_name,
+#statusBox {
+  color: white;
+  background-color: orange;
+  text-align: center;
+  border: 2px red solid;
+  padding: 7px;
+  border-radius: 32px;
+}
+
+#pet_name:hover {
+  opacity: 0.9;
+}
+
+#pet_name:active {
+  opacity: 0.7;
+}
+
+.petHealth,
+.petHunger,
+.petFitness {
+  color: gold;
+  top: -110px;
+  position: relative;
+  width: 30px;
+  font-family: 'Pacifico';
+  font-size: 1.5rem;
+  visibility: hidden;
+  text-align: center;
+  border: hidden;
+  background: none;
+}
+
+.petHealth {
+  top: -85px;
+}
+
+.status,
+.statusBox {
+  visibility: hidden;
+  font-family: 'Pacifico';
+}
+
+.statusVisible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+#description {
+  color: coral;
+  margin: 10px;
+  font-size: 2rem;
+  font-family: 'Pacifico';
+  width: 200%;
+  text-align: center;
+  background: none;
+  border: none;
+}

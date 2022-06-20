@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" src="/src/pet.js"></script>
+    <title>Virtual Pet</title>
+  </head>
+  <body>
+    <div class="main_container">
+      <h1 id="title" class="title">I-PET</h1>
+      <input value="Welcome to I-Pet. Please click on your pet and give it a name" id="description"> </input>
+      <img onclick="changeName()" class="dog_main" src="./assets/dog main.png" />
+    </div>
+    <div class="utils_container">
+      <p>Age</p>
+      <img class="heart" src="./assets/Heart .png" />
+      <input class="petHealth" id="health"></input>
+      <p>Hunger</p>
+      <img class="pizza" src="assets/green-heart.png" />
+      <input class="petHunger" id="hunger"></input>
+      <p>Fitness</p>
+      <img class="stamina" src="./assets/stamina.png" />
+      <input class="petFitness" id="fitness"></input>
+    </div>
+    <div class="function_container">
+      <img onclick="feedMe()" src="./assets/dog-bowl.png" class="feed" />
+      <p>Feed Me</p>
+      <img onclick="walkMe()" src="./assets/dog-walk.png" class="walk" />
+      <p>Walk Me</p>
+      <img onclick="levelUp()" class="grow" src="./assets/LEVEL-UP.png" />
+      <p>Level up</p>
+    </div>
+  </body>
+  <script>
+    const pet = new Pet();
+    const getPetName = document.getElementById('title');
+    let getHealth = document.getElementById('health');
+    let getHunger = document.getElementById('hunger');
+    let getFitness = document.getElementById('fitness');
+    const getStatus = document.getElementById('status');
+    const editStatusBox = document.getElementById('statusBox');
+    let updateStatus = document.getElementById('description')
+
+    
+
+    Pet.name === 'Pet'
+      ? (getPetName.innerText = 'I-PET')
+      : (getPetName.innerHTML = Pet.name);
+
+    function walkMe() {
+      pet.walk();
+      updateStatus.value = pet.checkUp()
+      setTimeout(() => { updateStatus.value=''}, 3000)
+      getFitness.value = pet.fitness
+      console.log(pet.fitness);
+    }
+
+    function feedMe() {
+      pet.feed();
+      updateStatus.value = pet.checkUp()
+      setTimeout(() => { updateStatus.value = ''}, 3000)
+      getHunger.value= pet.hunger
+      console.log(pet.hunger);
+    }
+
+    function levelUp() {
+      pet.growUp();
+      updateStatus.value = pet.checkUp()
+      setTimeout(() => { updateStatus.value = ''}, 3000)
+      getHealth.value = pet.age
+      getFitness.value = pet.fitness
+      getHunger.value = pet.hunger
+      console.log(pet.age);
+    }
+
+    function changeName() {
+      const petName = prompt("Please Enter Your Pet's Name");
+      getPetName.innerHTML = petName;
+      if (petName.length === 0) {
+        alert('Pet Name Must Contain At Least Once Character');
+        prompt("Please Enter Your Pet's Name");
+      } else {
+        getPetName.innerHTML = petName;
+        getFitness.value = pet.fitness
+        getFitness.classList.add('statusVisible')
+        getHealth.value = pet.age
+        getHealth.classList.add('statusVisible')
+        getHunger.value= pet.hunger
+        getHunger.classList.add('statusVisible')
+        pet.name = petName;
+        updateStatus.value = pet.status
+       alert(`Welcome your new pet ${pet.name} to their new home. Before you get started, there are a few things you need to know. Your pet can only live up to 30 years old. You must feed your pet before their hunger level reached 10. You must also walk them before their fitness level reaches 0. If you do not. Your pet will die and the game will be reset. Have fun!`)
+      }
+    }
+  </script>
+</html>
